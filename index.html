@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bhandhavya K | Senior Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --background-light: #f3f4f6;
+      --background-card: #ffffff;
+      --primary-color: #2563eb;
+      --primary-light: #dbeafe;
+      --secondary-color: #4f46e5;
+      --text-color: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e0e7ff;
+      --pill-background: #eff6ff;
+      --pill-border: #3b82f6;
+      --border-radius: 16px;
+      --shadow-soft: 0 20px 40px rgba(99, 102, 241, 0.15);
+      --max-width: 980px;
+      --transition-speed: 0.2s ease-in-out;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top left, #e0f2fe 0%, transparent 60%),
+        radial-gradient(circle at bottom right, #c7d2fe 0%, transparent 60%),
+        var(--background-light);
+      color: var(--text-color);
+      min-height: 100vh;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-speed);
+    }
+
+    a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    header {
+      background-color: var(--background-card);
+      border-radius: var(--border-radius);
+      padding: 2rem 2.5rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, var(--primary-light), transparent);
+      border-radius: 50%;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .name {
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--secondary-color);
+    }
+
+    .title {
+      font-size: 1.15rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .desc {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      max-width: 42rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .contact-info {
+      margin-top: 1.6rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-wrapper {
+      margin-top: 2.4rem;
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--primary-color);
+      color: #ffffff;
+      padding: 0.75rem 1.8rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 15px 25px rgba(37, 99, 235, 0.4);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition-speed), box-shadow var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--secondary-color);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.55);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 15px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    main section {
+      margin-top: 3.6rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--secondary-color);
+      border-bottom: 4px solid var(--primary-color);
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .card {
+      background-color: var(--background-card);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-color);
+      padding: 2rem 2.5rem;
+      transition: box-shadow var(--transition-speed);
+    }
+
+    .card:hover {
+      box-shadow: 0 28px 56px rgba(79, 70, 229, 0.16);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.3rem;
+    }
+
+    .skill-set {
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-pill {
+      background: var(--pill-background);
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      border: 2px solid var(--pill-border);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      cursor: default;
+      user-select: none;
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Skill progress bars */
+    .skill-bar-container {
+      margin-top: 6px;
+      position: relative;
+      background: #dbeafe;
+      border-radius: 9999px;
+      height: 8px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 8px;
+      border-radius: 9999px;
+      background: var(--primary-color);
+      width: 0;
+      transition: width 1.3s ease-in-out;
+    }
+
+    .experience-list {
+      margin-top: 1.5rem;
+    }
+
+    .experience-item {
+      margin-bottom: 2.8rem;
+      cursor: pointer;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.05rem;
+      user-select: none;
+    }
+
+    .exp-title {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+    }
+
+    .exp-company {
+      font-weight: 700;
+      font-style: italic;
+      color: var(--primary-color);
+    }
+
+    .exp-dates {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .exp-desc {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      max-width: 720px;
+      display: none;
+    }
+
+    ul.exp-bullets {
+      padding-left: 1.8rem;
+      margin-top: 0.8rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      display: none;
+    }
+
+    ul.exp-bullets li {
+      margin-bottom: 0.5rem;
+      line-height: 1.45;
+      font-size: 1rem;
+    }
+
+    .cert-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      margin-top: 2.2rem;
+    }
+
+    .certifications, .contact {
+      flex: 1 1 360px;
+    }
+
+    .cert-list {
+      list-style: disc inside;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .contact p {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 1.3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(37, 99, 235, 0.5);
+      display: none;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    #backToTop:hover {
+      background: var(--secondary-color);
+    }
+
+    footer {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-wrapper {
+        justify-content: center;
+      }
+      .experience-item, .certifications, .contact {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="hero-content">
+        <div class="hero-top">
+          <h1 class="name">Bhandhavya K</h1>
+          <p class="title">Senior Software Engineer</p>
+        </div>
+        <p class="desc">
+          Senior Software Engineer with over ten years of experience delivering scalable, high-impact web and cloud solutions. Skilled in full-stack development with expertise in Java, Spring Boot, React, Angular, and microservices, driving innovation on AWS, Azure, and GCP platforms.
+        </p>
+        <div class="contact-info">
+          <span>📍 Texas, USA</span>
+          <span>📧 <a href="mailto:bhandhavya01@outlook.com">bhandhavya01@outlook.com</a></span>
+          <span>📱 +1 469‑659‑0369</span>
+        </div>
+        <div class="btn-wrapper">
+          <a href="#" class="btn">
+            <span class="icon">⬇</span>
+            Download Resume
+          </a>
+          <a href="#experience" class="btn btn-secondary">
+            <span>💼</span>
+            Experience
+          </a>
+          <a href="#skills" class="btn btn-secondary">
+            <span>⚙️</span>
+            Skills
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="summary">
+        <div class="section-header">
+          <h2 class="section-title">Professional Summary</h2>
+        </div>
+        <div class="card">
+          <p>Bhandhavya K is a results-driven Senior Software Engineer with experience spanning multiple industries including finance, healthcare, telecom, and e-commerce. Adept at designing and implementing robust scalable applications, he thrives in environments where cloud-native architecture and data-driven solutions are critical.</p>
+          <p>His expertise encompasses full lifecycle software development, from concept ideation to deployment and maintenance, with a focus on delivering measurable business value through agile practices and cross-team collaboration.</p>
+          <p>He continuously seeks opportunities to enhance product quality via devops automation, system observability, and proactive stakeholder communication.</p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-header">
+          <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <div class="card skill-grid">
+          <div>
+            <div class="skill-set">Frontend Technologies</div>
+            <div class="skills-list">
+              <div class="skill-pill">React.js
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-pill">Angular
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:85%"></div></div>
+              </div>
+              <div class="skill-pill">TypeScript
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:88%"></div></div>
+              </div>
+              <div class="skill-pill">JavaScript ES6+
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-pill">HTML5
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:95%"></div></div>
+              </div>
+              <div class="skill-pill">CSS3
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:90%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-set">Backend & API Development</div>
+            <div class="skills-list">
+              <div class="skill-pill">Java 8–17
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:92%"></div></div>
+              </div>
+              <div class="skill-pill">Spring Boot
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-pill">RESTful APIs
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:88%"></div></div>
+              </div>
+              <div class="skill-pill">Node.js
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:82%"></div></div>
+              </div>
+              <div class="skill-pill">Express.js
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:80%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-set">Databases & Storage</div>
+            <div class="skills-list">
+              <div class="skill-pill">MySQL
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:88%"></div></div>
+              </div>
+              <div class="skill-pill">PostgreSQL
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:87%"></div></div>
+              </div>
+              <div class="skill-pill">MongoDB
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:70%"></div></div>
+              </div>
+              <div class="skill-pill">Azure SQL
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:75%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-set">Cloud & DevOps Tools</div>
+            <div class="skills-list">
+              <div class="skill-pill">AWS
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:85%"></div></div>
+              </div>
+              <div class="skill-pill">Azure
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:82%"></div></div>
+              </div>
+              <div class="skill-pill">Google Cloud Platform
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:80%"></div></div>
+              </div>
+              <div class="skill-pill">Docker
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-pill">Kubernetes
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:75%"></div></div>
+              </div>
+              <div class="skill-pill">CI/CD Pipelines
+                <div class="skill-bar-container"><div class="skill-bar-fill" style="width:88%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Professional Experience</h2>
+        </div>
+        <div class="experience-list">
+
+          <article class="experience-item">
+            <div class="exp-header" tabindex="0" role="button" aria-expanded="false">
+              <h3 class="exp-title">Senior Software Engineer</h3>
+              <span class="exp-company">Teladoc Health, New York, USA</span>
+              <span class="exp-dates">Sep 2024 – Present</span>
+            </div>
+            <p class="exp-desc">Leading the architecture and development of a healthcare application platform empowering virtual-care workflows.</p>
+            <ul class="exp-bullets">
+              <li>Designed scalable microservices enabling AI-powered scheduling and patient-doctor matching.</li>
+              <li>Deployed advanced NLP techniques to generate consultation summaries for improved clinical documentation.</li>
+              <li>Collaborated with cloud architects to optimize Kubernetes and GCP infrastructure for availability and cost.</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header" tabindex="0" role="button" aria-expanded="false">
+              <h3 class="exp-title">Senior Software Engineer</h3>
+              <span class="exp-company">Citi Bank, Texas, USA</span>
+              <span class="exp-dates">Aug 2023 – Sep 2024</span>
+            </div>
+            <p class="exp-desc">Reengineered loan platform services to enhance customer experience and automate approval workflows.</p>
+            <ul class="exp-bullets">
+              <li>Built modular microservices with Spring Boot focused on security and auditability.</li>
+              <li>Developed Angular frontends with real-time validation improving loan application accuracy.</li>
+              <li>Integrated credit-risk AI models and designed Power BI dashboards for stakeholder visibility.</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header" tabindex="0" role="button" aria-expanded="false">
+              <h3 class="exp-title">Software Engineer</h3>
+              <span class="exp-company">Virtusa, Chennai, India</span>
+              <span class="exp-dates">Dec 2021 – Aug 2023</span>
+            </div>
+            <p class="exp-desc">Migrated legacy insurance software to cloud-native, highly available distributed systems.</p>
+            <ul class="exp-bullets">
+              <li>Developed Angular components and Java microservices for policy administration.</li>
+              <li>Optimized database layer performance and implemented effective caching strategies.</li>
+              <li>Established deployment automation using AWS CI/CD pipelines reducing release times.</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header" tabindex="0" role="button" aria-expanded="false">
+              <h3 class="exp-title">Software Engineer</h3>
+              <span class="exp-company">Airtel, Hyderabad, India</span>
+              <span class="exp-dates">Nov 2018 – Dec 2021</span>
+            </div>
+            <p class="exp-desc">Built high-traffic telecom applications, focusing on customer billing and plan management.</p>
+            <ul class="exp-bullets">
+              <li>Developed user interfaces using React and backend APIs in Spring Boot.</li>
+              <li>Introduced observability tooling to improve system reliability and incident response.</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <div class="exp-header" tabindex="0" role="button" aria-expanded="false">
+              <h3 class="exp-title">Software Analyst</h3>
+              <span class="exp-company">Myntra, Hyderabad, India</span>
+              <span class="exp-dates">Jun 2015 – Nov 2018</span>
+            </div>
+            <p class="exp-desc">Enhanced e-commerce application performance and personalized customer journeys.</p>
+            <ul class="exp-bullets">
+              <li>Implemented scalable UI components, improving responsiveness during peak campaigns.</li>
+              <li>Improved logging and backend performance for better debugging and faster checkout.</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="details">
+        <div class="section-header">
+          <h2 class="section-title">Certifications & Contact</h2>
+        </div>
+        <div class="cert-contact" style="display:flex; flex-wrap:wrap; gap:3rem; margin-top:2rem;">
+          <div class="certifications card" style="flex:1 1 360px;">
+            <h3>Certifications</h3>
+            <ul class="cert-list">
+              <li>AWS Certified – AI Practitioner</li>
+              <li>Google Certified – Professional Data Engineer</li>
+              <li>Oracle Certified – Java SE 8 Programmer</li>
+            </ul>
+          </div>
+          <div class="contact card" style="flex:1 1 360px;">
+            <h3>Contact</h3>
+            <p>
+              Email: <a href="mailto:bhandhavya01@outlook.com">bhandhavya01@outlook.com</a><br />
+              Phone: +1 469‑659‑0369
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button id="backToTop" aria-label="Back to top" title="Back to top">&uarr;</button>
+
+    <footer>
+      © <span id="year"></span> Bhandhavya K
+    </footer>
+  </div>
+
+  <script>
+    // Animate skill bars on scroll
+    function animateSkillBars() {
+      const skillBars = document.querySelectorAll('.skill-bar-fill');
+      skillBars.forEach(bar => {
+        const barWidth = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = barWidth;
+        }, 100);
+      });
+    }
+
+    // Collapsible experience details
+    const expHeaders = document.querySelectorAll('.exp-header');
+    expHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', !expanded);
+        const desc = header.nextElementSibling; // Description paragraph
+        const list = desc.nextElementSibling; // Bullets list
+        if (expanded) {
+          desc.style.display = 'none';
+          if(list) list.style.display = 'none';
+        } else {
+          desc.style.display = 'block';
+          if(list) list.style.display = 'block';
+        }
+      });
+      // Accessibility: Allow keyboard expand/collapse (enter, space)
+      header.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Initialize
+    window.addEventListener('load', () => {
+      animateSkillBars();
+    });
+  </script>
+</body>
+</html>
