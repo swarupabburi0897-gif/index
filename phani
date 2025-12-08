@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phani IEEE Paper</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; max-width: 1800Apx; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .paper-info { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; }
+        .download { display: inline-block; background: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+        .download:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Emotion Detection in Healthcare: IEEE Journal Paper</h1>
+    
+    <div class="paper-info">
+        <h2>Phanikumar Akkenapalli</h2>
+        <p><strong>Department of Computer Science</strong><br>
+        Rivier University, Nashua, New Hampshire<br>
+        pakkenapalli@rivier.edu</p>
+    </div>
+
+    <img src="pha.jpg" alt="IEEE Research Paper - Emotion Detection in Healthcare">
+
+    <p><strong>Abstract:</strong> This IEEE journal paper presents a multimodal emotion detection system achieving 91.5% accuracy by integrating facial expressions, speech analysis, and physiological signals (EEG, heart rate) for healthcare applications. The system uses ResNet-50/VGG-16 for facial analysis, Bi-LSTM/Transformers for speech, and 1D CNN/Bi-LSTM for physiological data across FER-2013, DEAP, IEMOCAP, HUME-Vid, and PhysioNet datasets.</p>
+
+
+</body>
+</html>
